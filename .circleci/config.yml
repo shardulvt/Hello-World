@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  my-java:
+    docker:
+      - image: cimg/openjdk:17.0.0
+    steps:
+      - checkout
+      - run: java HelloWorld.java
+workflows:
+  JAVA-workflow:
+    jobs:
+      - my-java
