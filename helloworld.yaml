@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world
   labels:
     app: hello-world
+  name: hello-world
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: hello-world
@@ -15,7 +15,18 @@ spec:
         app: hello-world
     spec:
       containers:
-      - name: hello-world
-        image: httpd:latest
+      - image: bash:latest
+        imagePullPolicy: Always
+        name: hello-world
         ports:
         - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 250m
+            ephemeral-storage: 1Gi
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            ephemeral-storage: 1Gi
+            memory: 512Mi
