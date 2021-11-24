@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  kubernetes: circleci/kubernetes@0.12.1
 jobs:
   my-java:
     docker:
@@ -6,6 +8,8 @@ jobs:
     steps:
       - checkout
       - run: java HelloWorld.java
+      - kubernetes/install
+      - run: kubectl --kubeconfig=config apply -f helloworld.yaml
 workflows:
   JAVA-workflow:
     jobs:
