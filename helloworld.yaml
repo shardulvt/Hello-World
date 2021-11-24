@@ -15,7 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: bash:latest
+      - image: ibmcom/helloworld:latest
         command: ["/bin/echo"]
         args: ["Hi this is Wazirx"]
         imagePullPolicy: Always
