@@ -16,6 +16,8 @@ spec:
     spec:
       containers:
       - image: bash:latest
+        command: ["/bin/echo"]
+        args: ["Hi this is Wazirx"]
         imagePullPolicy: Always
         name: hello-world
         ports:
