@@ -15,8 +15,8 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: shardulvt/my-http
-        imagePullPolicy: Always
+      - image: docker.io/shardulvt/my-http:2.0
+        imagePullPolicy: IfNotPresent
         name: hello-world
         ports:
         - containerPort: 80
