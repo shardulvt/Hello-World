@@ -15,9 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: ibmcom/helloworld:latest
-        command: ["/bin/echo"]
-        args: ["Hi this is Wazirx"]
+      - image: shardulvt/my-http
         imagePullPolicy: Always
         name: hello-world
         ports:
