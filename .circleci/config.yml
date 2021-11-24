@@ -10,8 +10,6 @@ jobs:
       - run: java HelloWorld.java
       - kubernetes/install-kubectl
       - run: kubectl --kubeconfig=config apply -f helloworld.yaml
-      - run: sleep 30
-      - run: kubectl --kubeconfig=config port-forward $(kubectl --kubeconfig=config get pod --selector="app=hello-world" --output jsonpath='{.items[0].metadata.name}') 8080:80
 workflows:
   cicdpipeline-workflow:
     jobs:
