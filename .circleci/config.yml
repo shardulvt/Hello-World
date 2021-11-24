@@ -2,15 +2,17 @@ version: 2.1
 orbs:
   kubernetes: circleci/kubernetes@0.12.1
 jobs:
-  my-java:
+  my-cicd:
     docker:
       - image: cimg/openjdk:17.0.0
     steps:
       - checkout
       - run: java HelloWorld.java
-      - kubernetes/install
+      - kubernetes/install-kubectl
       - run: kubectl --kubeconfig=config apply -f helloworld.yaml
+      - run: sleep 30
+      - run: kubectl --kubeconfig=config port-forward $(kubectl --kubeconfig=config get pod --selector="app=hello-world" --output jsonpath='{.items[0].metadata.name}') 8080:80
 workflows:
-  JAVA-workflow:
+  cicdpipeline-workflow:
     jobs:
-      - my-java
+      - my-cicd
