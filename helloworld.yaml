@@ -30,18 +30,18 @@ spec:
             cpu: 100m
             ephemeral-storage: 1Gi
             memory: 250Mi
-      readinessProbe:
-        failureThreshold: 1000
-        httpGet:
-          path: /
-          port: 3000
-        initialDelaySeconds: 10
-        timeoutSeconds: 1
-        periodSeconds: 2
-        successThreshold: 1
-      volumeMounts:
-       - name: config-volume
-         mountPath: /usr/local/apache2/htdocs/
+        readinessProbe:
+            failureThreshold: 1000
+            httpGet:
+            path: /
+            port: 3000
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 2
+            successThreshold: 1
+        volumeMounts:
+        - name: config-volume
+            mountPath: /usr/local/apache2/htdocs/
     volumes:
      - name: config-volume
        configMap:
