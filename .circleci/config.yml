@@ -1,18 +1,34 @@
+#Specifying the version of CircleCi
 version: 2.1
+#Orbs are analogous to plugins in jenkins
 orbs:
+#install kubernetes orbs since we need to use kubectl
   kubernetes: circleci/kubernetes@0.12.1
 jobs:
+#N number of jobs can be setup here
   my-cicd:
     docker:
+    #Since it's a cloud based CI, Seting up a Ubuntu Environment - openjdk version used since we need to run java command.
+    #Can use Python or Ruby based on the type of code
       - image: cimg/openjdk:17.0.0
     steps:
+    #checks out my git repository
       - checkout
+      #runs the java file present in repo
       - run: java HelloWorld.java
+      #installs kubectl package to use kubectl commands using kubeconfig file of the kubernetes cluster
       - kubernetes/install-kubectl
+      #applying deployment yaml if any changes
       - run: kubectl --kubeconfig=config apply -f helloworld.yaml
+      #deleting existing configmap
       - run: kubectl --kubeconfig=config delete cm hello-world-config
+      #creating a new configmap from index.html present in the forked git repo
       - run: kubectl --kubeconfig=config create cm hello-world-config --from-file=index.html
+      #Restarting the pod in rollout fashion in order to avoid any downtime
+      - run: kubectl --kubeconfig=config rollout restart deployments/hello-world
 workflows:
+#name of my workflow
   cicdpipeline-workflow:
+  #name of my job
     jobs:
       - my-cicd
