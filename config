@@ -17,10 +17,10 @@ users:
   user:
     auth-provider:
       config:
-        access-token: ya29.a0ARrdaM_ZgkfKWXPpM0e26vRGTph7D9ZqZ2GZvBL17OGbvhyey13h9FML-g6hc-lNPXmjtyQV_PGXb-MAUVEvrUUdV53KEFs7a3p8ZTpK2ueptBbj9HbJ2aqWlea4pkGeNKDYUOimKmslQ7xWxd5LQfBwXd_INt20al3NsqaxLO44hj6ispyvNuaXdiZm7FT3ytBhbce4liqeh7NyvNQ_L_S6Ok3z02j3kOCO2qu94vcI3anLY9hL1bNpKWOqQcQ75pT-1Sk
+        access-token: ya29.a0ARrdaM8rw7g7SN7qc2fZaAlxeiF7Cx2Thrv4Tf-PJWifs1fxn0uYUHrQ7lvph6LyWl41qpqQZaEQvUd6KkA5WcMDiQ_tqGv5iOeW-MEPJr-5_Q0sc_oKG51i_iaUwU4Eb4MPvn0kWKFm2eJJkkUkhKhUqPJ5ETG7KkA-jdWSFqLxSU_gzHNF1HJcNLebjF0ELWgD4xxGM9UB8frhJ14PXR9oclC6QlbySKHrtUcx_z8ET-RR3Zf5kdEBJI_ORFHKBKHu9kk
         cmd-args: config config-helper --format=json
         cmd-path: /usr/lib/google-cloud-sdk/bin/gcloud
-        expiry: "2021-11-24T15:20:32Z"
+        expiry: "2021-11-25T12:01:03Z"
         expiry-key: '{.credential.token_expiry}'
         token-key: '{.credential.access_token}'
       name: gcp
