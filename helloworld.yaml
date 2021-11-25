@@ -5,7 +5,7 @@ metadata:
     app: hello-world
   name: hello-world
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: hello-world
@@ -15,7 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: docker.io/shardulvt/my-http:2.0
+      - image: quay.io/shardulvt/my-http:2.0
         imagePullPolicy: IfNotPresent
         name: hello-world
         ports:
@@ -30,3 +30,21 @@ spec:
             cpu: 100m
             ephemeral-storage: 1Gi
             memory: 250Mi
+      readinessProbe:
+        failureThreshold: 1000
+        httpGet:
+          path: /
+          port: 3000
+        initialDelaySeconds: 10
+        timeoutSeconds: 1
+        periodSeconds: 2
+        successThreshold: 1
+      volumeMounts:
+       - name: config-volume
+         mountPath: /usr/local/apache2/htdocs/
+    volumes:
+     - name: config-volume
+       configMap:
+          name: hello-world-config
+    imagePullSecrets:
+    - name: wazrixsecret
