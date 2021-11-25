@@ -15,7 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: quay.io/shardulvt/my-http:2.0
+      - image: quay.io/shardul_tadaskar/my-http:3.0
         imagePullPolicy: IfNotPresent
         name: hello-world
         ports:
@@ -31,20 +31,20 @@ spec:
             ephemeral-storage: 1Gi
             memory: 250Mi
         readinessProbe:
-            failureThreshold: 1000
-            httpGet:
+          failureThreshold: 1000
+          httpGet:
             path: /
             port: 3000
-            initialDelaySeconds: 10
-            timeoutSeconds: 1
-            periodSeconds: 2
-            successThreshold: 1
+          initialDelaySeconds: 10
+          timeoutSeconds: 1
+          periodSeconds: 2
+          successThreshold: 1
         volumeMounts:
         - name: config-volume
-            mountPath: /usr/local/apache2/htdocs/
-    volumes:
-     - name: config-volume
-       configMap:
+          mountPath: /usr/local/apache2/htdocs/
+      volumes:
+      - name: config-volume
+        configMap:
           name: hello-world-config
-    imagePullSecrets:
-    - name: wazrixsecret
+      imagePullSecrets:
+      - name: wazirxsecret
