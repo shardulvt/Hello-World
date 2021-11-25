@@ -15,7 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - image: quay.io/shardul_tadaskar/my-http:3.0
+      - image: quay.io/shardul_tadaskar/my-http:4.0
         imagePullPolicy: IfNotPresent
         name: hello-world
         ports:
@@ -41,7 +41,7 @@ spec:
           successThreshold: 1
         volumeMounts:
         - name: config-volume
-          mountPath: /usr/local/apache2/htdocs/
+          mountPath: /var/www/html
       volumes:
       - name: config-volume
         configMap:
