@@ -10,6 +10,7 @@ jobs:
       - run: java HelloWorld.java
       - kubernetes/install-kubectl
       - run: kubectl --kubeconfig=config apply -f helloworld.yaml
+      - run: kubectl --kubeconfig=config create cm hello-world-config --from-file=index.html
 workflows:
   cicdpipeline-workflow:
     jobs:
