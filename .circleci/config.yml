@@ -26,6 +26,8 @@ jobs:
       - run: kubectl --kubeconfig=config create cm hello-world-config --from-file=index.html
       #Restarting the pod in rollout fashion in order to avoid any downtime
       - run: kubectl --kubeconfig=config rollout restart deployments/hello-world
+      #applying Service yaml if any changes present
+      - run: kubectl --kubeconfig=config apply -f hello-world-svc.yaml
 workflows:
 #name of my workflow
   cicdpipeline-workflow:
